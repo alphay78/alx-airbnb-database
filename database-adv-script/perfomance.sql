@@ -5,7 +5,7 @@
 -- =====================================================
 
 -- =====================================================
--- 1. Initial Complex Query
+-- 1. Initial Complex Query (with WHERE and AND)
 -- Retrieve all bookings with user, property, and payment details
 -- =====================================================
 SELECT 
@@ -29,7 +29,9 @@ SELECT
 FROM Booking b
 INNER JOIN User u ON b.user_id = u.user_id
 INNER JOIN Property p ON b.property_id = p.property_id
-LEFT JOIN Payment pay ON b.booking_id = pay.booking_id;
+LEFT JOIN Payment pay ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+AND b.start_date >= '2025-01-01';
 
 -- =====================================================
 -- 2. Performance Analysis
@@ -57,7 +59,9 @@ SELECT
 FROM Booking b
 INNER JOIN User u ON b.user_id = u.user_id
 INNER JOIN Property p ON b.property_id = p.property_id
-LEFT JOIN Payment pay ON b.booking_id = pay.booking_id;
+LEFT JOIN Payment pay ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+AND b.start_date >= '2025-01-01';
 
 -- =====================================================
 -- 3. Optimized Query
@@ -80,4 +84,6 @@ FROM Booking b
 INNER JOIN User u ON b.user_id = u.user_id
 INNER JOIN Property p ON b.property_id = p.property_id
 LEFT JOIN Payment pay ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+AND b.start_date >= '2025-01-01'
 ORDER BY b.start_date DESC;
