@@ -36,7 +36,7 @@ SELECT
     p.property_id,
     p.name AS property_name,
     p.location,
-    p.pricepernight,
+    p.price_per_night,
     r.review_id,
     r.rating,
     r.comment,
